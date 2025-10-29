@@ -1,46 +1,39 @@
 require("git"):setup()
-require("full-border"):setup()
+require("smart-enter"):setup {
+	open_multi = true,
+}
+require("starship"):setup()
 require("mactag"):setup {
-  -- Keys used to add or remove tags
-  keys = {
-    r = "Red",
-    o = "Orange",
-    y = "Yellow",
-    g = "Green",
-    b = "Blue",
-    p = "Purple",
-  },
-  -- Colors used to display tags
-  colors = {
-    Red    = "#ee7b70",
-    Orange = "#f5bd5c",
-    Yellow = "#fbe764",
-    Green  = "#91fc87",
-    Blue   = "#5fa3f8",
-    Purple = "#cb88f8",
-  },
+    -- Keys used to add or remove tags
+    keys = {
+        r = "Red",
+        o = "Orange",
+        y = "Yellow",
+        g = "Green",
+        b = "Blue",
+        p = "Purple",
+    },
+    -- Colors used to display tags
+    colors = {
+        Red    = "#ee7b70",
+        Orange = "#f5bd5c",
+        Yellow = "#fbe764",
+        Green  = "#91fc87",
+        Blue   = "#5fa3f8",
+        Purple = "#cb88f8",
+    },
 }
 require("eza-preview"):setup({
+  default_tree = true,
   level = 2,
-  follow_symlinks = false,
-  dereference = false
+  follow_symlinks = true,
+  dereference = true,
+  all = true,
+  git_ignore = true,
+  git_status = true
 })
-require("smart-enter"):setup {
-  open_multi = true,
-}
-require("yaziline"):setup({
-  color = "#bb9af7",
-  separator_style = "curvy", -- "angly" | "curvy" | "liney" | "empty"
-  select_symbol = "",
-  yank_symbol = "󰆐",
-  filename_max_length = 24, -- truncate when filename > 24
-  filename_truncate_length = 6, -- leave 6 chars on both sides
-  filename_truncate_separator = "..." -- the separator of the truncated filename
+-- ~/.config/yazi/init.lua
+require("relative-motions"):setup({
+    show_numbers="relative",
+    show_motion = true
 })
--- plugin: bookmark
-require("yamb"):setup {
-	cli = "fzf",
-}
-require("starship"):setup {
-	config_file = "~/.config/yazi/starship.toml",
-}
